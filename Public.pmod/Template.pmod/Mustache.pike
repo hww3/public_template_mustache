@@ -17,6 +17,8 @@
   See http://mustache.github.com/ for more info.
 */
 
+  constant version = "1.0";
+
   class _notfound{static mixed cast(string type){if(type=="string") return ""; else return 0;}};
   object notfound = _notfound();
 
