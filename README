@@ -1,0 +1,39 @@
+Mustache 
+
+Inspired by ctemplate and et, Mustache is a framework-agnostic way to render 
+logic-free views.
+
+As ctemplates says, "It emphasizes separating logic from presentation: it is 
+impossible to embed application logic in this template language."
+
+For a list of implementations (other than Ruby) and tips, see 
+http://mustache.github.com/.
+
+Using Public.Template.Mustache
+
+Begin by verifying that you have Regexp.PCRE installed. If not, install the PCRE 
+library and rebuild your pike, or run pike -x module in your _Regexp_PCRE module 
+directory. You may need to clear out old .o files from your Pike module directory.
+
+Next, install PCRERegexp.pike and the Public.pmod folder to a location in your 
+Pike module path.
+
+Now, run Pike (the -M. assumes you're just going to work in the module dist 
+directory rather than install things):
+
+$ pike -M.
+Pike v7.8 release 352 running Hilfe v3.5 (Incremental Pike Frontend)
+> object m = Public.Template.Mustache();
+> m->to_html("{{greeting}}, {{audience}}!", 
+       (["greeting": "Hello", 
+         "audience": "world"]));
+(1) Result: "Hello, world!"
+
+And you're off to the races!
+
+This code is still relatively young and may break or behave in unexpected ways. 
+Please feel free to send bug reports to me; my contact info may be found in the 
+AUTHORS file.
+
+Bill Welliver, October 2011
+

@@ -1,0 +1,4 @@
+- rewrite so that PCRE is not required (major architectural change)
+- rewrite so it's less ugly
+- missing functionality?
+- conformance?
