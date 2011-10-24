@@ -24,28 +24,28 @@ protected void create(string match) {
                 
     for (;;)
     {
-      array substrings = ({});
       array(int)|int v=regexp->exec(subject,i);
 
       if (intp(v) && !regexp->handle_exec_error([int]v)) break;
 
       if (v[0]>i) res+=subject[i..v[0]-1];
 
-      if(sizeof(v)>2)
-      {
-        int c = 2;
-        do
-        {
-           substrings += ({ subject[v[c]..(v[c+1]-1)] });
-           c+=2;
-        }
-        while(c<= (sizeof(v)-2));
-      }
-
       if 
         (stringp(with)) res+=with;
       else 
       { 
+        array substrings = ({});
+        if(sizeof(v)>2)
+        {
+          int c = 2;
+          do
+          {
+             substrings += ({ subject[v[c]..(v[c+1]-1)] });
+             c+=2;
+          }
+          while(c<= (sizeof(v)-2));
+        }
+
         res += with(subject[v[0]..v[1]-1], substrings, @args); 
       }
       i=v[1];
