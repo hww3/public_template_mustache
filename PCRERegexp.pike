@@ -26,7 +26,7 @@ protected void create(string match) {
     {
       array(int)|int v=regexp->exec(subject,i);
 
-      if (intp(v) && !regexp->handle_exec_error([int]v)) break;
+      if (intp(v)) break;
 
       if (v[0]>i) res+=subject[i..v[0]-1];
 
