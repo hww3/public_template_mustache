@@ -18,7 +18,7 @@
 */
 
   constant version = "1.0";
-
+  //program PCRERegexp = _PCRERegexp; //Regexp.PCRE.Studied;
   class _notfound{static mixed cast(string type){if(type=="string") return ""; else return 0;}};
   object notfound = _notfound();
 
@@ -101,7 +101,7 @@
       }
 
       object regex = getCachedRegex("render_pragmas", lambda(string otag, string ctag) {
-        return  PCRERegexp(otag + "%([\\w-]+) ?([\\w]+=[\\w]+)?" + ctag);
+        return  .PCRERegexp(otag + "%([\\w-]+) ?([\\w]+=[\\w]+)?" + ctag);
       });
 
       return regex->replace(template, lambda(string match, string pragma, mixed options) {
@@ -143,7 +143,7 @@
       }
       object regex = getCachedRegex("render_section", lambda (string otag, string ctag) {
         // This regex matches _the first_ section ({{#foo}}{{/foo}}), and captures the remainder
-        return PCRERegexp(
+        return .PCRERegexp(
           "^([\\s\\S]*?)" +         // all the crap at the beginning that is not {{*}} ($1)
 
           otag +                    // {{
@@ -223,7 +223,7 @@
   function new_regex= lambda()
   {
      return getCachedRegex("render_tags", lambda(string otag, string ctag) {
-          return PCRERegexp(otag + "(=|!|>|\\{|%)?([^\\/#\\^]+?)\\1?" + ctag + "+");
+          return .PCRERegexp(otag + "(=|!|>|\\{|%)?([^\\/#\\^]+?)\\1?" + ctag + "+");
         });
   };
 
@@ -278,7 +278,7 @@
           "/", ".", "*", "+", "?", "|",
           "(", ")", "[", "]", "{", "}", "\\"
         });
-        sRE = PCRERegexp(
+        sRE = .PCRERegexp(
           "(\\" + specials*("|\\") + ")"
         );
       }
@@ -363,7 +363,7 @@
     string escape(string s) {
       if(!s) s = "";
 
-      return PCRERegexp("&(?!\w+;)|[\"'\\\\<>]")->replace(s, lambda (string y) {
+      return .PCRERegexp("&(?!\w+;)|[\"'\\\\<>]")->replace(s, lambda (string y) {
         switch(y) {
         case "&": return "&amp;";
         case "\"": return "&quot;";

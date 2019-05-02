@@ -8,7 +8,7 @@ int main()
       (["yes": 0, "name": "green", "link": true, "url": "#Green"]),
       (["name": "blue", "link": true, "url": "#Blue"])
   }),
-//  "empty": true
+  "empty": Val.true
 ]);
   string t = Stdio.read_file("demo.mustache");
 
